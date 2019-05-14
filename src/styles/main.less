@@ -1,0 +1,205 @@
+@default: #1698D9;
+@defaultHover: #2EA8E6;
+@selected: #D91667;
+@selectedHover: #E52E7A;
+@disabled: #B3B3B3;
+
+body {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-image: url('../assets/Pattern.png'); /* Путь к фоновому изображению */
+  background-color: #c7b39b; /* Цвет фона */
+  @font-face {
+    font-family: ExoThin;
+    src: url("./exo-thin.otf");
+  };
+}
+foreignObject {
+  overflow: visible;
+}
+svg {
+  overflow: visible;
+}
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 35px;
+  width: 100%;
+
+}
+.content-main {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+.prevent-hover {
+}
+.card-container {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1280px){
+    width: 33.3333%;
+  }
+}
+.card-selected {
+  .svg__background {
+    stroke: @selected !important;
+  }
+  .card__qty {
+    background-color: @selected !important;
+  }
+  &.card__hoverable{
+    &:hover{
+      .svg__background {
+        stroke: @selectedHover !important;
+      }
+      .card__qty {
+        background-color: @selectedHover !important;
+      }
+    }
+  }
+
+}
+.card-default {
+  .svg__background {
+    stroke: @default;
+  }
+  .card__qty {
+    background-color: @default;
+  }
+  &:hover{
+    .svg__background:hover {
+      stroke: @defaultHover;
+    }
+    .card__qty {
+      background-color: @defaultHover;
+    }
+  }
+}
+.card-disabled {
+  color: #B3B3B3;
+  g image{
+    filter: url(#grayscale)
+  }
+  g .card__footer {
+    filter: none !important;
+  }
+  .svg__background {
+    stroke: @disabled !important;
+  }
+  .card__qty {
+    background-color: @disabled !important;
+  }
+  .card__footer {
+    color:#FFFF66 !important;
+  }
+}
+
+.layout-header {
+  font-family: "Exo 2.0 Thin";
+  font-size: 36px;
+  line-height: 43px;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 1px 1px #000000;
+  margin-bottom: 25px;
+}
+
+.card-main {
+  display: flex;
+  position: relative;
+  width: 320px;
+  height: 480px;
+  border-radius: 12px;
+}
+.card {
+  &__head {
+    div{
+      font-family: "Trebuchet MS";
+      font-style: normal;
+      font-weight: bold;
+      text-align: left;
+      width: 100%;
+    }
+    margin-top: 21px;
+    margin-left: 50px;
+
+  }
+  &__subheader {
+    font-weight: normal !important;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__product-name {
+    margin-left: -4px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+  &__taste {
+
+    font-size: 24px;
+    line-height: 28px;
+  }
+  &__gift {
+    font-weight: normal !important;
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 16px;
+
+  }
+  &__qty {
+    &-text{
+      color: white;
+      text-align: center;
+      position: relative;
+      top: 20px;
+    }
+    &-value{
+      font-weight: normal !important;
+      font-size: 42px;
+      line-height: 35px;
+      display: block;
+    }
+    &-measurement{
+      display: block;
+    }
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+
+  }
+  &__footer {
+    font-weight: normal !important;
+    font-size: 13px;
+    line-height: 15px;
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: -29px;
+    & a{
+      color: @default;
+      text-decoration-color: @default;
+      text-decoration-style: dashed;
+      -moz-text-decoration-style: dashed;
+    };
+  }
+}
